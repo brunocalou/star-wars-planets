@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
-import { Planet } from './pages/Planet/Planet';
 import { MainLayout } from './components/MainLayout/MainLayout';
-import { Info } from './pages/Info/Info';
 import { injectGlobal } from 'styled-components';
 import { BaseTheme } from './theme/BaseTheme';
+import { PlanetInfo } from './pages/PlanetInfo/PlanetInfo';
+import { ProjectInfo } from './pages/ProjectInfo/ProjectInfo';
 import StarJedi from './assets/font/Starjedi.ttf'
 
 export class App extends Component {
@@ -12,8 +12,8 @@ export class App extends Component {
     return (
       <BrowserRouter>
         <MainLayout>
-          <Route exact path='/' component={Planet}/>
-          <Route path='/info' component={Info}/>
+          <Route exact path='/' component={PlanetInfo}/>
+          <Route path='/info' component={ProjectInfo}/>
         </MainLayout>
       </BrowserRouter>
     );
@@ -35,6 +35,13 @@ injectGlobal`
     padding: 0;
     margin: 0;
     width: 100%;
+    height: 100%;
+  }
+  html {
+    height: 100%;
+  }
+
+  #root {
     height: 100%;
   }
 `
