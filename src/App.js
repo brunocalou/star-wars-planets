@@ -1,21 +1,33 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Route } from 'react-router-dom';
+import { Planet } from './pages/Planet/Planet';
+import { MainLayout } from './components/MainLayout/MainLayout';
+import { Info } from './pages/Info/Info';
+import { injectGlobal } from 'styled-components';
+import { BaseTheme } from './theme/BaseTheme';
+import { Gradient } from './model/Gradient';
 
-class App extends Component {
+export class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
+      <BrowserRouter>
+        <MainLayout>
+          <Route exact path='/' component={Planet}/>
+          <Route path='/info' component={Info}/>
+        </MainLayout>
+      </BrowserRouter>
     );
   }
 }
 
-export default App;
+// Global style
+// eslint-disable-next-line
+injectGlobal`
+  body {
+    background-color: ${BaseTheme.backgroundColor};
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+  }
+`
