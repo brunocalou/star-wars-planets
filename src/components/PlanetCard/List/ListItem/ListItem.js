@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import { Gradient } from '../../../../model/Gradient';
+import { Gradient } from '../../../../model/Gradient/Gradient';
+import { ClimateColors } from '../../util/ClimateColors';
 
 export class ListItem extends Component {
     render() {
@@ -27,7 +28,7 @@ const Bullet = styled.div`
     height: ${BulletSize};
     margin-right: 1rem;
     background: ${props => props.gradient ? `linear-gradient(${props.gradient.start}, ${props.gradient.end})` : 'initial'};
-    background-color: ${props => props.color || 'black'};
+    background-color: ${props => props.color || ClimateColors.default};
     border-radius: 50%;
 `;
 

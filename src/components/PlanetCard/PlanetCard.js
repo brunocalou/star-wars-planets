@@ -3,9 +3,9 @@ import styled from 'styled-components'
 import PropTypes from 'prop-types';
 import { BaseTheme } from '../../theme/BaseTheme';
 import { Colors } from '../../theme/Colors';
-import { Planet } from '../../model/Planet';
+import { Planet } from '../../model/Planet/Planet';
 import { Media } from '../../util/Media';
-import { formatNumber } from '../../util/formatNumber';
+import { formatNumberOrBypass } from '../../util/formatNumber';
 import { List } from './List/List';
 import { Constants } from './Constants';
 import { transformPlanet } from './util/transformPlanet';
@@ -13,7 +13,7 @@ import { transformPlanet } from './util/transformPlanet';
 export class PlanetCard extends Component {
     constructor(props) {
         super(props);
-        
+
         const transformedPlanet = transformPlanet(props.planet);
 
         this.state = {
@@ -28,7 +28,7 @@ export class PlanetCard extends Component {
                 <CardTitle>{this.state.transformedPlanet.name}</CardTitle>
 
                 <CardSubtitle>Population</CardSubtitle>
-                <CardPopulation>{formatNumber(this.state.transformedPlanet.population)}</CardPopulation>
+                <CardPopulation>{formatNumberOrBypass(this.state.transformedPlanet.population)}</CardPopulation>
 
                 <CardSubtitle>Climate</CardSubtitle>
                 <List items={this.state.transformedPlanet.climate} />
@@ -43,7 +43,7 @@ export class PlanetCard extends Component {
                 <CardDivider></CardDivider>
 
                 <CardActionContainer>
-                    <CardAction>Next</CardAction>
+                    <CardAction onClick={this.props.onNext}>Next</CardAction>
                 </CardActionContainer>
             </Material>
         );
@@ -58,6 +58,7 @@ export class PlanetCard extends Component {
 
 PlanetCard.propTypes = {
     planet: PropTypes.instanceOf(Planet).isRequired,
+    onNext: PropTypes.func
     // next: PropTypes.string
 }
 
@@ -102,7 +103,7 @@ const CardActionContainer = styled.div`
     justify-content: flex-end;
 `;
 
-const CardAction = styled.h4`
+const CardAction = styled.a`
     padding: ${Constants.contentPadding};
     font-size: 1rem;
     text-transform: uppercase;

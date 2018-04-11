@@ -1,4 +1,4 @@
-import { Planet } from "../../model/Planet";
+import { Planet } from "../../model/Planet/Planet";
 
 class _PlanetRepository {
     constructor() {
@@ -52,6 +52,7 @@ class _PlanetRepository {
         return fetch(`https://swapi.co/api/planets/${randomIndex}`)
             .then(results => results.json())
             .then(response => new Planet({
+                id: randomIndex,
                 name: response.name,
                 climate: response.climate.split(',').map(climate => climate.trim()),
                 terrain: response.terrain.split(',').map(terrain => terrain.trim()),

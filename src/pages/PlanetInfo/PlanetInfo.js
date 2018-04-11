@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components'
 import { Colors } from '../../theme/Colors';
 import { PlanetCard } from '../../components/PlanetCard/PlanetCard';
-import { Planet } from '../../model/Planet';
+import { Planet } from '../../model/Planet/Planet';
 import { Footer } from '../../components/Footer/Footer';
 import { PlanetRepository } from '../../repository/PlanetRepository/PlanetRepository';
 
@@ -14,31 +14,45 @@ export class PlanetInfo extends Component {
         };
     }
 
-    _getRandomPlanet() {
+    _reloadIfNeeded() {
         if (!PlanetRepository.isLoaded()) {
-            PlanetRepository.reload()
+            return PlanetRepository.reload()
                 .then(() => this._getRandomPlanet())
                 .catch(error => console.log(error));
+        }
+        return new Promise();
+    }
+
+    _getRandomPlanet() {
+        console.log('_getRandomPlanet')
+        this.setState({ planet: undefined })
+
+        if (PlanetRepository.hasRandomPlanet()) {
+            PlanetRepository.getRandomPlanet()
+            .then(planet => {
+                console.log(planet);
+                return planet;
+            })
+            .then(planet => {
+                // this.setState({ planet })
+                if (planet.isValid) this.setState({ planet })
+                else {
+                    console.log(`${planet.name} is not valid, fetching another`)
+                    this._getRandomPlanet()
+                }
+            })
+            .catch(error => console.log(error))
         } else {
-            if (PlanetRepository.hasRandomPlanet()) {
-                PlanetRepository.getRandomPlanet()
-                .then(planet => {
-                    console.log(planet);
-                    return planet;
-                })
-                .then(planet => {
-                    if (planet.isValid) this.setState({ planet })
-                    else this._getRandomPlanet()
-                })
-                .catch(error => console.log(error))
-            } else {
-                console.error('No planets left!')
-            }
+            console.error('No planets left!')
         }
     }
 
+    logNext() {
+        console.log('next')
+    }
+
     componentDidMount() {
-        this._getRandomPlanet();
+        this._reloadIfNeeded().then(() => this._getRandomPlanet());
     }
 
     render() {
@@ -52,7 +66,7 @@ export class PlanetInfo extends Component {
                 </FlexItem>
 
                 <FlexItem>
-                    {this.state.planet ? <PlanetCard planet={this.state.planet}/> : <h4>Loading...</h4>}
+                    {this.state.planet ? <PlanetCard planet={this.state.planet} onNext={() => this._getRandomPlanet()}/> : <h4>Loading...</h4>}
                 </FlexItem>
 
                 <FlexItem>
