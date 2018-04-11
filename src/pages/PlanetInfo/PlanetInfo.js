@@ -1,17 +1,15 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import posed from "react-pose";
 import { Colors } from '../../theme/Colors';
 import { PlanetCard } from '../../components/PlanetCard/PlanetCard';
 import { Footer } from '../../components/Footer/Footer';
 import { PlanetRepository } from '../../repository/PlanetRepository/PlanetRepository';
-
 export class PlanetInfo extends Component {
     constructor() {
         super();
         this.state = {
             planet: undefined,
-            dismissingCard: false,
+            fetchingPlanet: true,
         };
     }
 
@@ -24,9 +22,7 @@ export class PlanetInfo extends Component {
     }
 
     _getRandomPlanet() {
-        this.setState({ dismissingCard: true })
-
-        const context = this
+        this.setState({ fetchingPlanet: true })
 
         if (PlanetRepository.hasRandomPlanet()) {
             PlanetRepository.getRandomPlanet()
@@ -37,7 +33,7 @@ export class PlanetInfo extends Component {
                 .then(planet => {
                     if (planet.isValid) {
                         this.setState({ planet })
-                        this.setState({ dismissingCard: false })
+                        this.setState({ fetchingPlanet: false })
                     } else {
                         console.log(`${planet.name} is not valid, fetching another`)
                         this._getRandomPlanet()
@@ -49,17 +45,8 @@ export class PlanetInfo extends Component {
         }
     }
 
-    logNext() {
-        console.log('next')
-    }
-
     componentDidMount() {
         this._reloadIfNeeded().then(() => this._getRandomPlanet());
-    }
-
-    onAnimationChange(value) {
-        console.log('On animation change')
-        console.log(value)
     }
 
     render() {
@@ -73,17 +60,15 @@ export class PlanetInfo extends Component {
                 </FlexItem>
 
                 <FlexItem>
+                    <DismissibleAnimation dismissed={this.state.fetchingPlanet}>
                     {this.state.planet
-                        ?   <AnimatedPlanetCard
-                                pose={this.state.dismissingCard ? 'leaving' : 'idle'}
-                                onChange={this.onAnimationChange}>
-                                <PlanetCard
+                                ?<PlanetCard
                                     key={this.state.planet.id}
                                     planet={this.state.planet}
                                     onNext={() => this._getRandomPlanet()} />
-                            </AnimatedPlanetCard>
-                        : <h4>Loading...</h4>
-                    }
+                                    : undefined
+                                }
+                    </DismissibleAnimation>
                 </FlexItem>
 
                 <FlexItem>
@@ -94,16 +79,11 @@ export class PlanetInfo extends Component {
     }
 }
 
-const AnimatedPlanetCard = posed.div({
-    leaving: {
-        x: '-100%',
-        opacity: 0
-    },
-    idle: {
-        x: '0%',
-        opacity: 1
-    }
-});
+const DismissibleAnimation = styled.div`
+     transition: transform 300ms ease-in-out, opacity 300ms ease-in-out;
+     transform: ${props => props.dismissed ? 'translate3d(-400px, 0, 0)' : 'initial'};
+     opacity: ${props => props.dismissed ? '0' : '1'};
+`;
 
 const Navbar = styled.nav`
     text-align: center;
