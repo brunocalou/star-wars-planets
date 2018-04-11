@@ -5,7 +5,6 @@ import { ListItem } from './ListItem/ListItem';
 import { Constants } from '../Constants';
 
 const ListStyle = styled.ul`
-    width: 100%;
     padding-left: ${Constants.contentPadding};
     padding-right: ${Constants.contentPadding};
 `;

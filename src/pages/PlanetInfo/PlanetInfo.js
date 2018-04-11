@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { Colors } from '../../theme/Colors';
 import { PlanetCard } from '../../components/PlanetCard/PlanetCard';
 import { Planet } from '../../model/Planet';
+import { Footer } from '../../components/Footer/Footer';
 
 const planet = new Planet({
     name: 'Yavin IV',
@@ -26,9 +27,9 @@ export class PlanetInfo extends Component {
                 <FlexItem>
                     <PlanetCard planet={planet}/>
                 </FlexItem>
-                
+
                 <FlexItem>
-                    <h1>Footer</h1>
+                    <Footer />
                 </FlexItem>
             </Flex>
         );
@@ -59,4 +60,5 @@ const Flex = styled.section`
 const FlexItem = styled.div`
     flex-grow: 0;
     flex-shrink: 0;
+    width: ${props => props.fullWidth ? '100%' : 'initial'}
 `;

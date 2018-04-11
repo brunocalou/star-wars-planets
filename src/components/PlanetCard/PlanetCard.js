@@ -63,8 +63,8 @@ PlanetCard.propTypes = {
 
 const Material = styled.div`
     background-color: ${BaseTheme.cardColor};
-    width: 340px;
-    ${Media.phone`width: 300px;`};
+    width: ${Constants.cardWidth};
+    ${Media.phone`width: ${Constants.cardPhoneWidth};`};
 `;
 
 const CardTitle = styled.h3`
