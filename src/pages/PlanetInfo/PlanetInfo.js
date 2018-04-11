@@ -18,7 +18,7 @@ export class PlanetInfo extends Component {
             return PlanetRepository.reload()
                 .catch(error => console.log(error));
         }
-        return new Promise();
+        return new Promise((resolve, reject) => resolve());
     }
 
     _getRandomPlanet() {
