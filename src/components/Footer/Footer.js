@@ -13,7 +13,7 @@ export class Footer extends Component {
                 <Link to="/info">
                     <Image src={informationLogo} alt="information"/>
                 </Link>
-                <a href="https://github.com/brunocalou/star-wars-planets" target="_blank">
+                <a href="https://github.com/brunocalou/star-wars-planets" target="_blank" rel="noopener noreferrer">
                     <Image src={githubLogo} alt="github"/>
                 </a>
             </Flex>

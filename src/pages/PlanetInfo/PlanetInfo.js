@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import styled from 'styled-components'
+import styled from 'styled-components';
+import posed from "react-pose";
 import { Colors } from '../../theme/Colors';
 import { PlanetCard } from '../../components/PlanetCard/PlanetCard';
-import { Planet } from '../../model/Planet/Planet';
 import { Footer } from '../../components/Footer/Footer';
 import { PlanetRepository } from '../../repository/PlanetRepository/PlanetRepository';
 
@@ -10,38 +10,40 @@ export class PlanetInfo extends Component {
     constructor() {
         super();
         this.state = {
-            planet: undefined
+            planet: undefined,
+            dismissingCard: false,
         };
     }
 
     _reloadIfNeeded() {
         if (!PlanetRepository.isLoaded()) {
             return PlanetRepository.reload()
-                .then(() => this._getRandomPlanet())
                 .catch(error => console.log(error));
         }
         return new Promise();
     }
 
     _getRandomPlanet() {
-        console.log('_getRandomPlanet')
-        this.setState({ planet: undefined })
+        this.setState({ dismissingCard: true })
+
+        const context = this
 
         if (PlanetRepository.hasRandomPlanet()) {
             PlanetRepository.getRandomPlanet()
-            .then(planet => {
-                console.log(planet);
-                return planet;
-            })
-            .then(planet => {
-                // this.setState({ planet })
-                if (planet.isValid) this.setState({ planet })
-                else {
-                    console.log(`${planet.name} is not valid, fetching another`)
-                    this._getRandomPlanet()
-                }
-            })
-            .catch(error => console.log(error))
+                .then(planet => {
+                    console.log(planet);
+                    return planet;
+                })
+                .then(planet => {
+                    if (planet.isValid) {
+                        this.setState({ planet })
+                        this.setState({ dismissingCard: false })
+                    } else {
+                        console.log(`${planet.name} is not valid, fetching another`)
+                        this._getRandomPlanet()
+                    }
+                })
+                .catch(error => console.log(error))
         } else {
             console.error('No planets left!')
         }
@@ -55,6 +57,11 @@ export class PlanetInfo extends Component {
         this._reloadIfNeeded().then(() => this._getRandomPlanet());
     }
 
+    onAnimationChange(value) {
+        console.log('On animation change')
+        console.log(value)
+    }
+
     render() {
         return (
             <Flex>
@@ -66,7 +73,17 @@ export class PlanetInfo extends Component {
                 </FlexItem>
 
                 <FlexItem>
-                    {this.state.planet ? <PlanetCard planet={this.state.planet} onNext={() => this._getRandomPlanet()}/> : <h4>Loading...</h4>}
+                    {this.state.planet
+                        ?   <AnimatedPlanetCard
+                                pose={this.state.dismissingCard ? 'leaving' : 'idle'}
+                                onChange={this.onAnimationChange}>
+                                <PlanetCard
+                                    key={this.state.planet.id}
+                                    planet={this.state.planet}
+                                    onNext={() => this._getRandomPlanet()} />
+                            </AnimatedPlanetCard>
+                        : <h4>Loading...</h4>
+                    }
                 </FlexItem>
 
                 <FlexItem>
@@ -76,6 +93,17 @@ export class PlanetInfo extends Component {
         );
     }
 }
+
+const AnimatedPlanetCard = posed.div({
+    leaving: {
+        x: '-100%',
+        opacity: 0
+    },
+    idle: {
+        x: '0%',
+        opacity: 1
+    }
+});
 
 const Navbar = styled.nav`
     text-align: center;

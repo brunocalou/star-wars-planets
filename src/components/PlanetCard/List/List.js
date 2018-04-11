@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import { ListItem } from './ListItem/ListItem';
 import { Constants } from '../Constants';
 
