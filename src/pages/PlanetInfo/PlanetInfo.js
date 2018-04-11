@@ -4,16 +4,43 @@ import { Colors } from '../../theme/Colors';
 import { PlanetCard } from '../../components/PlanetCard/PlanetCard';
 import { Planet } from '../../model/Planet';
 import { Footer } from '../../components/Footer/Footer';
-
-const planet = new Planet({
-    name: 'Yavin IV',
-    population: 2000,
-    climate: ['temperate', 'tropical'],
-    terrain: ['jungle', 'rainforests'],
-    films: ['A New Hope'],
-})
+import { PlanetRepository } from '../../repository/PlanetRepository/PlanetRepository';
 
 export class PlanetInfo extends Component {
+    constructor() {
+        super();
+        this.state = {
+            planet: undefined
+        };
+    }
+
+    _getRandomPlanet() {
+        if (!PlanetRepository.isLoaded()) {
+            PlanetRepository.reload()
+                .then(() => this._getRandomPlanet())
+                .catch(error => console.log(error));
+        } else {
+            if (PlanetRepository.hasRandomPlanet()) {
+                PlanetRepository.getRandomPlanet()
+                .then(planet => {
+                    console.log(planet);
+                    return planet;
+                })
+                .then(planet => {
+                    if (planet.isValid) this.setState({ planet })
+                    else this._getRandomPlanet()
+                })
+                .catch(error => console.log(error))
+            } else {
+                console.error('No planets left!')
+            }
+        }
+    }
+
+    componentDidMount() {
+        this._getRandomPlanet();
+    }
+
     render() {
         return (
             <Flex>
@@ -25,7 +52,7 @@ export class PlanetInfo extends Component {
                 </FlexItem>
 
                 <FlexItem>
-                    <PlanetCard planet={planet}/>
+                    {this.state.planet ? <PlanetCard planet={this.state.planet}/> : <h4>Loading...</h4>}
                 </FlexItem>
 
                 <FlexItem>

@@ -12,4 +12,12 @@ export class Planet {
         this.terrain = terrain;
         this.films = films;
     }
+
+    get isValid() {
+        const unknown = 'unknown';
+        return this.population !== unknown &&
+            this.climate !== unknown &&
+            this.terrain !== unknown &&
+            this.films !== unknown
+    }
 };
