@@ -31,11 +31,17 @@ injectGlobal`
   }
   body {
     background-color: ${BaseTheme.backgroundColor};
+    color: ${BaseTheme.textColor};
     font-family: 'Roboto', sans-serif;
     padding: 0;
     margin: 0;
     width: 100%;
     height: 100%;
+    * {
+      font-weight: 100;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
   }
   html {
     height: 100%;

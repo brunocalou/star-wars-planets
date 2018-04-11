@@ -2,6 +2,15 @@ import React, { Component } from 'react';
 import styled from 'styled-components'
 import { Colors } from '../../theme/Colors';
 import { PlanetCard } from '../../components/PlanetCard/PlanetCard';
+import { Planet } from '../../model/Planet';
+
+const planet = new Planet({
+    name: 'Yavin IV',
+    population: 2000,
+    climate: ['temperate', 'tropical'],
+    terrain: ['jungle', 'rainforests'],
+    films: ['A New Hope'],
+})
 
 export class PlanetInfo extends Component {
     render() {
@@ -15,7 +24,7 @@ export class PlanetInfo extends Component {
                 </FlexItem>
 
                 <FlexItem>
-                    <PlanetCard/>
+                    <PlanetCard planet={planet}/>
                 </FlexItem>
                 
                 <FlexItem>
@@ -36,7 +45,6 @@ const NavbarTitle = styled.h3`
     margin: 0px;
     color: ${Colors.yellow};
     font-family: 'StarJedi';
-    font-weight: 100;
 `;
 
 const Flex = styled.section`
