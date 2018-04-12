@@ -50,16 +50,9 @@ export class PlanetCard extends Component {
     }
 }
 
-// PlanetCard.defaultProps = {
-//     planet: new Planet({
-//         name: 'Planet Name',
-//     })
-// }
-
 PlanetCard.propTypes = {
     planet: PropTypes.instanceOf(Planet).isRequired,
     onNext: PropTypes.func
-    // next: PropTypes.string
 }
 
 const Material = styled.div`
