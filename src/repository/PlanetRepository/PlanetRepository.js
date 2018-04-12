@@ -25,6 +25,7 @@ class _PlanetRepository {
             this.randomIndexes[i] = this.randomIndexes[randomIndex];
             this.randomIndexes[randomIndex] = aux;
         }
+        // this.randomIndexes = [1, 2]
     }
 
     isLoaded () {

@@ -7,6 +7,7 @@ import { PlanetInfo } from './pages/PlanetInfo/PlanetInfo';
 import { ProjectInfo } from './pages/ProjectInfo/ProjectInfo';
 import StarJedi from './assets/font/Starjedi.ttf'
 import { NotFound } from './pages/NotFound/NotFound';
+import { NoPlanetsLeft } from './pages/NoPlanetsLeft/NoPlanetsLeft';
 
 export class App extends Component {
   render() {
@@ -16,6 +17,7 @@ export class App extends Component {
           <Switch>
             <Route exact path='/' component={PlanetInfo}/>
             <Route path='/info' component={ProjectInfo}/>
+            <Route path='/restart' component={NoPlanetsLeft}/>
             <Route component={NotFound}/>
           </Switch>
         </MainLayout>

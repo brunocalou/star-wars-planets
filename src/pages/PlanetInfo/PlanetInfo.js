@@ -20,14 +20,12 @@ export class PlanetInfo extends Component {
             planet: undefined,
             fetchingPlanet: true,
             fetchingError: false,
-            noPlanetsLeft: false,
         };
     }
 
     _getRandomPlanet() {
         this.setState({ fetchingPlanet: true })
         this.setState({ fetchingError: false })
-        this.setState( { noPlanetsLeft: false })
 
         if (PlanetRepository.isLoaded()) {
             console.log('Planet repository says it is loaded')
@@ -52,8 +50,7 @@ export class PlanetInfo extends Component {
                         this.setState({ fetchingError: true })
                     })
             } else {
-                console.error('No planets left!')
-                this.setState( { noPlanetsLeft: true })
+                this.props.history.push('/restart')
             }
         } else {
             PlanetRepository.reload()
@@ -82,12 +79,12 @@ export class PlanetInfo extends Component {
                 message={
                     this.state.fetchingError
                         ?   <Message>Could not find a planet</Message>
-                        :   undefined
+                        :   null
                 }
                 button={
                     this.state.fetchingError
                         ?   <WireButton onClick={() => this._getRandomPlanet()}>Try Again</WireButton>
-                        : undefined
+                        : null
                 }>
 
                 {/*
@@ -104,7 +101,7 @@ export class PlanetInfo extends Component {
                                 key={this.state.planet.id}
                                 planet={this.state.planet}
                                 onNext={() => this._getRandomPlanet()} />
-                        :   undefined
+                        :   null
                         }
                     </DismissibleAnimation>
                     <LoadingContainer>

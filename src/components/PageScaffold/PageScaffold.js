@@ -41,8 +41,8 @@ export class PageScaffold extends Component {
 };
 
 PageScaffold.propTypes = {
-    navbar: PropTypes.instanceOf(Component),
-    message: PropTypes.instanceOf(Component),
-    button: PropTypes.instanceOf(Component),
+    // navbar: PropTypes.instanceOf(Component),
+    // message: PropTypes.instanceOf(Component),
+    // button: PropTypes.instanceOf(Component),
     pathname: PropTypes.string.isRequired
 }

@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
 
 import { Navbar } from '../../components/Navbar/Navbar';
 import { NavbarTitle } from '../../components/Navbar/NavbarTitle/NavbarTitle';
@@ -7,28 +6,33 @@ import { Image } from '../../components/Image/Image';
 import { Message } from '../../components/Message/Message';
 import { WireButton } from '../../components/WireButton/WireButton';
 import { PageScaffold } from '../../components/PageScaffold/PageScaffold';
-import R2D2 from '../../assets/img/R2D2.svg';
+import PlanetMissing from '../../assets/img/PlanetMissing.svg';
+import { PlanetRepository } from '../../repository/PlanetRepository/PlanetRepository';
 
-export class NotFound extends Component {
+export class NoPlanetsLeft extends Component {
+    reload() {
+        PlanetRepository.reload()
+            .then(() => this.props.history.push('/'));
+    }
+
     render () {
         return (
             <PageScaffold
                 pathname={this.props.history.location.pathname}
                 navbar={
                     <Navbar>
-                        <NavbarTitle big>404</NavbarTitle>
+                        <NavbarTitle>Star Wars</NavbarTitle>
+                        <NavbarTitle>Planets</NavbarTitle>
                     </Navbar>
                 }
                 message={
-                    <Message big>This is not the page <br/> you are looking for</Message>
+                    <Message>No planets left</Message>
                 }
                 button={
-                    <Link to="/">
-                        <WireButton>Home</WireButton>
-                    </Link>
+                    <WireButton onClick={() => this.reload()}>Restart</WireButton>
                 }
                 >
-                <Image src={R2D2} alt="Page not found" width="210"/>
+                <Image src={PlanetMissing} alt="Planet missing" width="210"/>
             </PageScaffold>
         );
     }
