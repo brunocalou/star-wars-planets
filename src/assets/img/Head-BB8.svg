@@ -1,0 +1,92 @@
+<svg width="78" height="61" viewBox="0 0 78 61" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="Canvas" fill="none">
+<g id="Head">
+<g id="Antena">
+<g id="Rectangle 2">
+<rect width="1" height="27" transform="matrix(0.986807 0.161899 -0.161899 0.986807 67.3712 0)" fill="#BDBDBD"/>
+</g>
+<g id="Rectangle 2.1">
+<rect width="1" height="6.99523" transform="matrix(0.986807 0.161899 -0.161899 0.986807 53.1324 13.7409)" fill="#BDBDBD"/>
+</g>
+</g>
+<g id="Subtract">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M 76.25 38.25L 76 38.25L 0 38.25L -0.25 38.25L -0.25 38C -0.25 16.8751 16.8751 -0.25 38 -0.25C 59.1249 -0.25 76.25 16.8751 76.25 38L 76.25 38.25Z" transform="translate(1 18)" fill="#E0E0E0"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M 76.25 38.25L 76 38.25L 0 38.25L -0.25 38.25L -0.25 38C -0.25 16.8751 16.8751 -0.25 38 -0.25C 59.1249 -0.25 76.25 16.8751 76.25 38L 76.25 38.25Z" stroke-width="0.5" stroke-miterlimit="8" transform="translate(1 18)" stroke="#BDBDBD"/>
+</g>
+<g id="Chin">
+<g id="Intersect">
+<path d="M 75.9871 0C 75.9956 0.332275 76 0.665649 76 1L 0 1C 0 0.665649 0.00439453 0.332275 0.0129395 0L 75.9871 0Z" transform="translate(1 55)" fill="#BDBDBD"/>
+</g>
+<g id="Rectangle 2_2">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M 0.592353 0.25L 3.02656 2.75L 70.9734 2.75L 73.4076 0.25L 0.592353 0.25Z" transform="translate(2 56)" fill="#E0E0E0"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M 0.592353 0.25L 3.02656 2.75L 70.9734 2.75L 73.4076 0.25L 0.592353 0.25Z" stroke-width="0.5" stroke-miterlimit="8" transform="translate(2 56)" stroke="#BDBDBD"/>
+</g>
+<g id="Rectangle 2.1_2">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M 0.73621 0.25L 2.69016 1.75L 63.3098 1.75L 65.2638 0.25L 0.73621 0.25Z" transform="translate(6 59)" fill="#E0E0E0"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M 0.73621 0.25L 2.69016 1.75L 63.3098 1.75L 65.2638 0.25L 0.73621 0.25Z" stroke-width="0.5" stroke-miterlimit="8" transform="translate(6 59)" stroke="#BDBDBD"/>
+</g>
+</g>
+<g id="Head Strip">
+<path d="M 0 3L 33.9783 3C 31.3712 1.69478 28.5933 0.680588 25.6868 0L 8.2915 0C 5.38501 0.680588 2.60706 1.69478 0 3Z" transform="translate(22.0109 19)" fill="#4F4F4F"/>
+</g>
+<g id="Bottom Orange Strips">
+<g id="Rectangle 2_3">
+<rect width="2" height="2" transform="translate(43 53)" fill="#F2994A"/>
+</g>
+<g id="Rectangle 3">
+<rect width="9" height="6" transform="translate(50 49)" fill="#F2994A"/>
+</g>
+<g id="Rectangle 4">
+<rect width="1" height="6" transform="translate(65 49)" fill="#F2994A"/>
+</g>
+<g id="Rectangle 4.1">
+<rect width="1" height="6" transform="translate(68 49)" fill="#F2994A"/>
+</g>
+<g id="Rectangle 5">
+<rect width="5" height="6" transform="translate(71 49)" fill="#F2994A"/>
+</g>
+<g id="Rectangle 2_4">
+<rect width="3" height="6" transform="translate(9 49)" fill="#F2994A"/>
+</g>
+</g>
+<g id="Orange Strip">
+<path d="M 20.9825 0L 0 0L 0 3L 24.6908 3C 23.5199 1.92514 22.2815 0.922775 20.9825 0Z" transform="translate(40 25)" fill="#F2994A"/>
+</g>
+<g id="Group">
+<g id="Ellipse">
+<circle cx="3" cy="3" r="2.75" stroke-width="0.5" transform="translate(24 47)" stroke="#4F4F4F"/>
+</g>
+<g id="Ellipse_2">
+<circle cx="2" cy="2" r="1.75" stroke-width="0.5" transform="translate(25 48)" stroke="#4F4F4F"/>
+</g>
+</g>
+<g id="Eye 2">
+<g id="Ellipse_3">
+<circle cx="6" cy="6" r="5.75" stroke-width="0.5" transform="translate(33 35)" stroke="#4F4F4F"/>
+</g>
+<g id="Ellipse_4">
+<circle cx="4.28571" cy="4.28571" r="4.28571" transform="translate(34.7142 36.7143)" fill="#333333"/>
+</g>
+<g id="Ellipse_5">
+<circle cx="3" cy="3" r="3" transform="translate(36 38)" fill="#4F4F4F"/>
+</g>
+<g id="Ellipse_6">
+<circle cx="1" cy="1" r="1" transform="translate(36 38)" fill="#828282"/>
+</g>
+</g>
+<g id="Eye 1">
+<g id="Ellipse_7">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M 10 18.75C 15.397 18.75 19.75 14.5967 19.75 9.5C 19.75 4.40329 15.397 0.25 10 0.25C 4.60299 0.25 0.25 4.40329 0.25 9.5C 0.25 14.5967 4.60299 18.75 10 18.75Z" transform="translate(14 20)" fill="#333333"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M 10 18.75C 15.397 18.75 19.75 14.5967 19.75 9.5C 19.75 4.40329 15.397 0.25 10 0.25C 4.60299 0.25 0.25 4.40329 0.25 9.5C 0.25 14.5967 4.60299 18.75 10 18.75Z" stroke-width="0.5" stroke-miterlimit="8" transform="translate(14 20)" stroke="#BDBDBD"/>
+</g>
+<g id="Ellipse_8">
+<path d="M 14 6.5C 14 10.0899 10.866 13 7 13C 3.13401 13 0 10.0899 0 6.5C 0 2.91015 3.13401 0 7 0C 10.866 0 14 2.91015 14 6.5Z" transform="translate(17 23)" fill="#4F4F4F"/>
+</g>
+<g id="Ellipse_9">
+<circle cx="1.5" cy="1.5" r="1.5" transform="translate(18 23)" fill="#828282"/>
+</g>
+</g>
+</g>
+</g>
+</svg>
+

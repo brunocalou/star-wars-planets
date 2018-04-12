@@ -4,7 +4,10 @@ import { Colors } from '../../theme/Colors';
 import { PlanetCard } from '../../components/PlanetCard/PlanetCard';
 import { Footer } from '../../components/Footer/Footer';
 import { PlanetRepository } from '../../repository/PlanetRepository/PlanetRepository';
-import EasyTransition from 'react-easy-transition'
+import EasyTransition from 'react-easy-transition';
+import { BB8Loading } from '../../components/BB8Loading/BB8Loading';
+import { Centered } from '../../components/Centered/Centered';
+import { BaseTheme } from '../../theme/BaseTheme';
 
 export class PlanetInfo extends Component {
     constructor() {
@@ -77,6 +80,10 @@ export class PlanetInfo extends Component {
                                         : undefined
                                     }
                         </DismissibleAnimation>
+                        <LoadingContainer>
+                            <BB8Loading />
+                            <h3 style={{textAlign: 'center'}}>Searching</h3>
+                        </LoadingContainer>
                     </FlexItem>
 
                     <FlexItem>
@@ -88,10 +95,15 @@ export class PlanetInfo extends Component {
     }
 }
 
+const LoadingContainer = styled(Centered)`
+    z-index: 0;
+`;
+
 const DismissibleAnimation = styled.div`
      transition: transform 300ms ease-in-out, opacity 300ms ease-in-out;
-     transform: ${props => props.dismissed ? 'translate3d(-400px, 0, 0)' : 'initial'};
+     transform: ${props => props.dismissed ? 'translate3d(-400px, 0, 0)' : 'translate3d(0, 0, 0)'}; // Keep the translate3d so that z-index still works
      opacity: ${props => props.dismissed ? '0' : '1'};
+     z-index: 1;
 `;
 
 const Navbar = styled.nav`
@@ -118,5 +130,5 @@ const Flex = styled.section`
 const FlexItem = styled.div`
     flex-grow: 0;
     flex-shrink: 0;
-    width: ${props => props.fullWidth ? '100%' : 'initial'}
+    width: ${props => props.fullWidth ? '100%' : 'initial'};
 `;
