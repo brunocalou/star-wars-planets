@@ -73,11 +73,11 @@ export class PlanetInfo extends Component {
                     <FlexItem>
                         <DismissibleAnimation dismissed={this.state.fetchingPlanet}>
                         {this.state.planet
-                                    ?<PlanetCard
-                                        key={this.state.planet.id}
-                                        planet={this.state.planet}
-                                        onNext={() => this._getRandomPlanet()} />
-                                        : undefined
+                                    ?   <PlanetCard
+                                            key={this.state.planet.id}
+                                            planet={this.state.planet}
+                                            onNext={() => this._getRandomPlanet()} />
+                                    :   undefined
                                     }
                         </DismissibleAnimation>
                         <LoadingContainer>
@@ -96,7 +96,9 @@ export class PlanetInfo extends Component {
 }
 
 const LoadingContainer = styled(Centered)`
-    z-index: 0;
+    /* A negative z-index keeps the item bellow the other on iOS.*/
+    /* When it was 0, it worked on the desktop, but not on iOS */
+    z-index: -1;
 `;
 
 const DismissibleAnimation = styled.div`
@@ -131,4 +133,5 @@ const FlexItem = styled.div`
     flex-grow: 0;
     flex-shrink: 0;
     width: ${props => props.fullWidth ? '100%' : 'initial'};
+    transform: translate3d(0, 0, 0);
 `;
