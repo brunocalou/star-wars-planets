@@ -14,5 +14,5 @@ export class MainLayout extends Component {
 
 const Background = styled.section`
     height: 100%;
-    background-color: ${BaseTheme.backgroundColor}
+    background-color: ${BaseTheme.backgroundColor};
 `;

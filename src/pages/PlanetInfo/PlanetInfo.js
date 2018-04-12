@@ -8,6 +8,9 @@ import EasyTransition from 'react-easy-transition';
 import { BB8Loading } from '../../components/BB8Loading/BB8Loading';
 import { Centered } from '../../components/Centered/Centered';
 import { BaseTheme } from '../../theme/BaseTheme';
+import PlanetNofFound from '../../assets/img/PlanetNotFound.svg';
+import { Constants } from '../../components/PlanetCard/Constants';
+import { Media, Sizes } from '../../util/Media';
 
 export class PlanetInfo extends Component {
     constructor() {
@@ -15,43 +18,59 @@ export class PlanetInfo extends Component {
         this.state = {
             planet: undefined,
             fetchingPlanet: true,
+            fetchingError: false
         };
     }
 
-    _reloadIfNeeded() {
-        if (!PlanetRepository.isLoaded()) {
-            return PlanetRepository.reload()
-                .catch(error => console.log(error));
-        }
-        return new Promise((resolve, reject) => resolve());
-    }
+    // _reloadIfNeeded() {
+    //     if (!PlanetRepository.isLoaded()) {
+    //         return PlanetRepository.reload()
+    //             .catch(error => console.log(error));
+    //     }
+    //     return new Promise((resolve, reject) => resolve());
+    // }
 
     _getRandomPlanet() {
         this.setState({ fetchingPlanet: true })
+        this.setState({ fetchingError: false })
 
-        if (PlanetRepository.hasRandomPlanet()) {
-            PlanetRepository.getRandomPlanet()
-                .then(planet => {
-                    console.log(planet);
-                    return planet;
-                })
-                .then(planet => {
-                    if (planet.isValid) {
-                        this.setState({ planet })
-                        this.setState({ fetchingPlanet: false })
-                    } else {
-                        console.log(`${planet.name} is not valid, fetching another`)
-                        this._getRandomPlanet()
-                    }
-                })
-                .catch(error => console.log(error))
+        if (PlanetRepository.isLoaded()) {
+            console.log('Planet repository says it is loaded')
+            if (PlanetRepository.hasRandomPlanet()) {
+                PlanetRepository.getRandomPlanet()
+                    .then(planet => {
+                        console.log(planet);
+                        return planet;
+                    })
+                    .then(planet => {
+                        if (planet.isValid) {
+                            this.setState({ planet })
+                            this.setState({ fetchingPlanet: false })
+                            this.setState({ fetchingError: false })
+                        } else {
+                            console.log(`${planet.name} is not valid, fetching another`)
+                            this._getRandomPlanet()
+                        }
+                    })
+                    .catch(error => {
+                        console.log(error)
+                        this.setState({ fetchingError: true })
+                    })
+            } else {
+                console.error('No planets left!')
+            }
         } else {
-            console.error('No planets left!')
+            PlanetRepository.reload()
+            .then(() => this._getRandomPlanet())
+            .catch((error) => {
+                console.log(error)
+                this.setState({ fetchingError: true })
+            });
         }
     }
 
     componentDidMount() {
-        this._reloadIfNeeded().then(() => this._getRandomPlanet());
+        this._getRandomPlanet();
     }
 
     render() {
@@ -70,19 +89,37 @@ export class PlanetInfo extends Component {
                         </Navbar>
                     </FlexItem>
 
-                    <FlexItem>
+                    <FlexItem style={{display: this.state.fetchingError ? 'initial' : 'none'}}>
+                        <Flex>
+                            <FlexItem>
+                            <Image src={PlanetNofFound}/>
+                            </FlexItem>
+                            <FlexItem>
+                                <Message style={{textAlign: 'center'}}>Could not find a planet</Message>
+                            </FlexItem>
+                            <FlexItem>
+                                <WireButton onClick={() => this._getRandomPlanet()}>Try Again</WireButton>
+                            </FlexItem>
+                        </Flex>
+                    </FlexItem>
+
+                    {/*
+                        Toggle the display instead of removing it from the DOM.
+                        This prevents image load failure on mobile devices, resulting on a BB8 without a head
+                    */}
+                    <FlexItem style={{display: this.state.fetchingError ? 'none' : 'initial'}}>
                         <DismissibleAnimation dismissed={this.state.fetchingPlanet}>
                         {this.state.planet
-                                    ?   <PlanetCard
-                                            key={this.state.planet.id}
-                                            planet={this.state.planet}
-                                            onNext={() => this._getRandomPlanet()} />
-                                    :   undefined
-                                    }
+                            ?   <PlanetCard
+                                    key={this.state.planet.id}
+                                    planet={this.state.planet}
+                                    onNext={() => this._getRandomPlanet()} />
+                            :   undefined
+                            }
                         </DismissibleAnimation>
                         <LoadingContainer>
                             <BB8Loading />
-                            <h3 style={{textAlign: 'center'}}>Searching</h3>
+                            <Message>Searching</Message>
                         </LoadingContainer>
                     </FlexItem>
 
@@ -94,6 +131,39 @@ export class PlanetInfo extends Component {
         );
     }
 }
+
+const Image = styled.img`
+    width: ${Constants.cardWidth};
+    ${Media.phone`width: ${Constants.cardPhoneWidth};`};
+`;
+
+const Message = styled.h3`
+    text-align: center;
+    padding: 1rem;
+`;
+
+const WireButton = styled.div`
+    display: inline-block;
+    margin: 1em;
+    padding: .7em;
+    border: 1px solid ${BaseTheme.textColor};
+    border-radius: 50px;
+    background-color: transparent;
+    box-shadow: none;
+    color: ${BaseTheme.textColor};
+    font-size: 1.2rem;
+    text-align: center;
+    cursor: pointer;
+
+    transition: border-color .2s, color .2s;
+
+    @media (min-width: ${Sizes.desktop + 'px'}) {
+        &:hover {
+            border-color: ${Colors.gray5};
+            color: ${Colors.gray5};
+        };
+    }
+`;
 
 const LoadingContainer = styled(Centered)`
     /* A negative z-index keeps the item bellow the other on iOS.*/

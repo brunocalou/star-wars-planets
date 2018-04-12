@@ -4,7 +4,6 @@ class _PlanetRepository {
     constructor() {
         this.planetCount = 0;
         this.randomIndexes = [];
-        // this.reload();
     }
 
     _randomize() {
@@ -32,11 +31,22 @@ class _PlanetRepository {
         return this.planetCount !== 0;
     }
 
-    reload () {
+    _fetchCount () {
         return fetch('https://swapi.co/api/planets')
+            // .then(() => {throw new Error('Fetch error')})
             .then(results => results.json())
-            .then(response => this.planetCount = response.count)
-            .then(() => this._randomize());
+            .then(response => this.planetCount = response.count);
+    }
+
+    reload () {
+        console.log('reload');
+        if (this.isLoaded()) {
+            console.log('is loaded')
+            this._randomize();
+            return new Promise((resolve, reject) => resolve());
+        }
+        console.log('is Not loaded')
+        return this._fetchCount().then(() => this._randomize());
     }
 
     hasRandomPlanet () {
@@ -50,6 +60,10 @@ class _PlanetRepository {
         if (randomIndex === undefined) throw new Error('No planets left');
 
         return fetch(`https://swapi.co/api/planets/${randomIndex}`)
+            // .then((results) => {
+            //     if (Math.random() > 0.8) throw new Error('Fetch error')
+            //     return results;
+            // })
             .then(results => results.json())
             .then(response => new Planet({
                 id: randomIndex,
