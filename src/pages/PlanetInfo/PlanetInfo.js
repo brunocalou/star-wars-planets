@@ -1,16 +1,23 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import EasyTransition from 'react-easy-transition';
+import PlanetNofFound from '../../assets/img/PlanetNotFound.svg';
 import { Colors } from '../../theme/Colors';
 import { PlanetCard } from '../../components/PlanetCard/PlanetCard';
 import { Footer } from '../../components/Footer/Footer';
 import { PlanetRepository } from '../../repository/PlanetRepository/PlanetRepository';
-import EasyTransition from 'react-easy-transition';
 import { BB8Loading } from '../../components/BB8Loading/BB8Loading';
 import { Centered } from '../../components/Centered/Centered';
 import { BaseTheme } from '../../theme/BaseTheme';
-import PlanetNofFound from '../../assets/img/PlanetNotFound.svg';
 import { Constants } from '../../components/PlanetCard/Constants';
 import { Media, Sizes } from '../../util/Media';
+import { Navbar } from '../../components/Navbar/Navbar';
+import { NavbarTitle } from '../../components/Navbar/NavbarTitle/NavbarTitle';
+import { Flex } from '../../components/Flex/Flex';
+import { FlexItem } from '../../components/Flex/FlexItem/FlexItem';
+import { WireButton } from '../../components/WireButton/WireButton';
+import { Message } from '../../components/Message/Message';
+import { Image } from '../../components/Image/Image';
 
 export class PlanetInfo extends Component {
     constructor() {
@@ -21,14 +28,6 @@ export class PlanetInfo extends Component {
             fetchingError: false
         };
     }
-
-    // _reloadIfNeeded() {
-    //     if (!PlanetRepository.isLoaded()) {
-    //         return PlanetRepository.reload()
-    //             .catch(error => console.log(error));
-    //     }
-    //     return new Promise((resolve, reject) => resolve());
-    // }
 
     _getRandomPlanet() {
         this.setState({ fetchingPlanet: true })
@@ -132,39 +131,6 @@ export class PlanetInfo extends Component {
     }
 }
 
-const Image = styled.img`
-    width: ${Constants.cardWidth};
-    ${Media.phone`width: ${Constants.cardPhoneWidth};`};
-`;
-
-const Message = styled.h3`
-    text-align: center;
-    padding: 1rem;
-`;
-
-const WireButton = styled.div`
-    display: inline-block;
-    margin: 1em;
-    padding: .7em;
-    border: 1px solid ${BaseTheme.textColor};
-    border-radius: 50px;
-    background-color: transparent;
-    box-shadow: none;
-    color: ${BaseTheme.textColor};
-    font-size: 1.2rem;
-    text-align: center;
-    cursor: pointer;
-
-    transition: border-color .2s, color .2s;
-
-    @media (min-width: ${Sizes.desktop + 'px'}) {
-        &:hover {
-            border-color: ${Colors.gray5};
-            color: ${Colors.gray5};
-        };
-    }
-`;
-
 const LoadingContainer = styled(Centered)`
     /* A negative z-index keeps the item bellow the other on iOS.*/
     /* When it was 0, it worked on the desktop, but not on iOS */
@@ -176,32 +142,4 @@ const DismissibleAnimation = styled.div`
      transform: ${props => props.dismissed ? 'translate3d(-400px, 0, 0)' : 'translate3d(0, 0, 0)'}; // Keep the translate3d so that z-index still works
      opacity: ${props => props.dismissed ? '0' : '1'};
      z-index: 1;
-`;
-
-const Navbar = styled.nav`
-    text-align: center;
-    padding: 1.5rem;
-`;
-
-const NavbarTitle = styled.h3`
-    font-size: 1.4rem;
-    margin: 0px;
-    color: ${Colors.yellow};
-    font-family: 'StarJedi';
-`;
-
-const Flex = styled.section`
-    display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    justify-content: space-between;
-    align-items: center;
-    height: 100%;
-`;
-
-const FlexItem = styled.div`
-    flex-grow: 0;
-    flex-shrink: 0;
-    width: ${props => props.fullWidth ? '100%' : 'initial'};
-    transform: translate3d(0, 0, 0);
 `;
