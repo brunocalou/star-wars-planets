@@ -4,6 +4,8 @@ import { Colors } from '../../theme/Colors';
 import { PlanetCard } from '../../components/PlanetCard/PlanetCard';
 import { Footer } from '../../components/Footer/Footer';
 import { PlanetRepository } from '../../repository/PlanetRepository/PlanetRepository';
+import EasyTransition from 'react-easy-transition'
+
 export class PlanetInfo extends Component {
     constructor() {
         super();
@@ -51,30 +53,37 @@ export class PlanetInfo extends Component {
 
     render() {
         return (
-            <Flex>
-                <FlexItem>
-                    <Navbar>
-                        <NavbarTitle>Star Wars</NavbarTitle>
-                        <NavbarTitle>Planets</NavbarTitle>
-                    </Navbar>
-                </FlexItem>
+            <EasyTransition
+                path={this.props.history.location.pathname}
+                initialStyle={{opacity: 0, height: '100vh'}}
+                transition="opacity 0.3s ease-in"
+                finalStyle={{opacity: 1, height: '100vh'}}
+            >
+                <Flex>
+                    <FlexItem>
+                        <Navbar>
+                            <NavbarTitle>Star Wars</NavbarTitle>
+                            <NavbarTitle>Planets</NavbarTitle>
+                        </Navbar>
+                    </FlexItem>
 
-                <FlexItem>
-                    <DismissibleAnimation dismissed={this.state.fetchingPlanet}>
-                    {this.state.planet
-                                ?<PlanetCard
-                                    key={this.state.planet.id}
-                                    planet={this.state.planet}
-                                    onNext={() => this._getRandomPlanet()} />
-                                    : undefined
-                                }
-                    </DismissibleAnimation>
-                </FlexItem>
+                    <FlexItem>
+                        <DismissibleAnimation dismissed={this.state.fetchingPlanet}>
+                        {this.state.planet
+                                    ?<PlanetCard
+                                        key={this.state.planet.id}
+                                        planet={this.state.planet}
+                                        onNext={() => this._getRandomPlanet()} />
+                                        : undefined
+                                    }
+                        </DismissibleAnimation>
+                    </FlexItem>
 
-                <FlexItem>
-                    <Footer />
-                </FlexItem>
-            </Flex>
+                    <FlexItem>
+                        <Footer />
+                    </FlexItem>
+                </Flex>
+            </EasyTransition>
         );
     }
 }
