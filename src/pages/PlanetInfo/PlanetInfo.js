@@ -2,15 +2,11 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import EasyTransition from 'react-easy-transition';
 import PlanetNofFound from '../../assets/img/PlanetNotFound.svg';
-import { Colors } from '../../theme/Colors';
 import { PlanetCard } from '../../components/PlanetCard/PlanetCard';
 import { Footer } from '../../components/Footer/Footer';
 import { PlanetRepository } from '../../repository/PlanetRepository/PlanetRepository';
 import { BB8Loading } from '../../components/BB8Loading/BB8Loading';
 import { Centered } from '../../components/Centered/Centered';
-import { BaseTheme } from '../../theme/BaseTheme';
-import { Constants } from '../../components/PlanetCard/Constants';
-import { Media, Sizes } from '../../util/Media';
 import { Navbar } from '../../components/Navbar/Navbar';
 import { NavbarTitle } from '../../components/Navbar/NavbarTitle/NavbarTitle';
 import { Flex } from '../../components/Flex/Flex';
@@ -91,10 +87,10 @@ export class PlanetInfo extends Component {
                     <FlexItem style={{display: this.state.fetchingError ? 'initial' : 'none'}}>
                         <Flex>
                             <FlexItem>
-                            <Image src={PlanetNofFound}/>
+                                <Image src={PlanetNofFound} alt="Planet not found"/>
                             </FlexItem>
                             <FlexItem>
-                                <Message style={{textAlign: 'center'}}>Could not find a planet</Message>
+                                <Message>Could not find a planet</Message>
                             </FlexItem>
                             <FlexItem>
                                 <WireButton onClick={() => this._getRandomPlanet()}>Try Again</WireButton>

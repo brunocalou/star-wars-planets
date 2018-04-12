@@ -3,6 +3,6 @@ import { Media } from '../../util/Media';
 import { Constants } from '../PlanetCard/Constants';
 
 export const Image = styled.img`
-    width: ${Constants.cardWidth};
-    ${Media.phone`width: ${Constants.cardPhoneWidth};`};
+    width: ${props => props.width || Constants.cardWidth};
+    ${Media.phone`width: ${props => props.width || Constants.cardPhoneWidth};`};
 `;
