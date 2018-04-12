@@ -1,19 +1,17 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import EasyTransition from 'react-easy-transition';
 import PlanetNofFound from '../../assets/img/PlanetNotFound.svg';
 import { PlanetCard } from '../../components/PlanetCard/PlanetCard';
-import { Footer } from '../../components/Footer/Footer';
 import { PlanetRepository } from '../../repository/PlanetRepository/PlanetRepository';
 import { BB8Loading } from '../../components/BB8Loading/BB8Loading';
 import { Centered } from '../../components/Centered/Centered';
 import { Navbar } from '../../components/Navbar/Navbar';
 import { NavbarTitle } from '../../components/Navbar/NavbarTitle/NavbarTitle';
-import { Flex } from '../../components/Flex/Flex';
 import { FlexItem } from '../../components/Flex/FlexItem/FlexItem';
 import { WireButton } from '../../components/WireButton/WireButton';
 import { Message } from '../../components/Message/Message';
 import { Image } from '../../components/Image/Image';
+import { PageScaffold } from '../../components/PageScaffold/PageScaffold';
 
 export class PlanetInfo extends Component {
     constructor() {
@@ -21,13 +19,15 @@ export class PlanetInfo extends Component {
         this.state = {
             planet: undefined,
             fetchingPlanet: true,
-            fetchingError: false
+            fetchingError: false,
+            noPlanetsLeft: false,
         };
     }
 
     _getRandomPlanet() {
         this.setState({ fetchingPlanet: true })
         this.setState({ fetchingError: false })
+        this.setState( { noPlanetsLeft: false })
 
         if (PlanetRepository.isLoaded()) {
             console.log('Planet repository says it is loaded')
@@ -53,6 +53,7 @@ export class PlanetInfo extends Component {
                     })
             } else {
                 console.error('No planets left!')
+                this.setState( { noPlanetsLeft: true })
             }
         } else {
             PlanetRepository.reload()
@@ -70,59 +71,49 @@ export class PlanetInfo extends Component {
 
     render() {
         return (
-            <EasyTransition
-                path={this.props.history.location.pathname}
-                initialStyle={{opacity: 0, height: '100vh'}}
-                transition="opacity 0.3s ease-in"
-                finalStyle={{opacity: 1, height: '100vh'}}
-            >
-                <Flex>
-                    <FlexItem>
-                        <Navbar>
-                            <NavbarTitle>Star Wars</NavbarTitle>
-                            <NavbarTitle>Planets</NavbarTitle>
-                        </Navbar>
-                    </FlexItem>
+            <PageScaffold
+                pathname={this.props.history.location.pathname}
+                navbar={
+                    <Navbar>
+                        <NavbarTitle>Star Wars</NavbarTitle>
+                        <NavbarTitle>Planets</NavbarTitle>
+                    </Navbar>
+                }
+                message={
+                    this.state.fetchingError
+                        ?   <Message>Could not find a planet</Message>
+                        :   undefined
+                }
+                button={
+                    this.state.fetchingError
+                        ?   <WireButton onClick={() => this._getRandomPlanet()}>Try Again</WireButton>
+                        : undefined
+                }>
 
-                    <FlexItem style={{display: this.state.fetchingError ? 'initial' : 'none'}}>
-                        <Flex>
-                            <FlexItem>
-                                <Image src={PlanetNofFound} alt="Planet not found"/>
-                            </FlexItem>
-                            <FlexItem>
-                                <Message>Could not find a planet</Message>
-                            </FlexItem>
-                            <FlexItem>
-                                <WireButton onClick={() => this._getRandomPlanet()}>Try Again</WireButton>
-                            </FlexItem>
-                        </Flex>
-                    </FlexItem>
+                {/*
+                    Toggle the display instead of removing it from the DOM.
+                    This prevents image load failure on mobile devices, resulting on a BB8 without a head
+                */}
 
-                    {/*
-                        Toggle the display instead of removing it from the DOM.
-                        This prevents image load failure on mobile devices, resulting on a BB8 without a head
-                    */}
-                    <FlexItem style={{display: this.state.fetchingError ? 'none' : 'initial'}}>
-                        <DismissibleAnimation dismissed={this.state.fetchingPlanet}>
-                        {this.state.planet
-                            ?   <PlanetCard
-                                    key={this.state.planet.id}
-                                    planet={this.state.planet}
-                                    onNext={() => this._getRandomPlanet()} />
-                            :   undefined
-                            }
-                        </DismissibleAnimation>
-                        <LoadingContainer>
-                            <BB8Loading />
-                            <Message>Searching</Message>
-                        </LoadingContainer>
-                    </FlexItem>
+                <Image src={PlanetNofFound} alt="Planet not found" style={{display: this.state.fetchingError ? 'initial' : 'none'}}/>
 
-                    <FlexItem>
-                        <Footer />
-                    </FlexItem>
-                </Flex>
-            </EasyTransition>
+                <FlexItem style={{display: this.state.fetchingError ? 'none' : 'initial'}}>
+                    <DismissibleAnimation dismissed={this.state.fetchingPlanet}>
+                    {this.state.planet
+                        ?   <PlanetCard
+                                key={this.state.planet.id}
+                                planet={this.state.planet}
+                                onNext={() => this._getRandomPlanet()} />
+                        :   undefined
+                        }
+                    </DismissibleAnimation>
+                    <LoadingContainer>
+                        <BB8Loading />
+                        <Message>Searching</Message>
+                    </LoadingContainer>
+                </FlexItem>
+
+            </PageScaffold>
         );
     }
 }

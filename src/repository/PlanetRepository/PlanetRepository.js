@@ -50,6 +50,7 @@ class _PlanetRepository {
     }
 
     hasRandomPlanet () {
+        // return false;
         return this.randomIndexes.length !== 0
     }
 
