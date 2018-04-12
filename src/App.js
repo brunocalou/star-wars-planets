@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import { MainLayout } from './components/MainLayout/MainLayout';
 import { injectGlobal } from 'styled-components';
+
+import { MainLayout } from './components/MainLayout/MainLayout';
 import { BaseTheme } from './theme/BaseTheme';
 import { PlanetInfo } from './pages/PlanetInfo/PlanetInfo';
 import { ProjectInfo } from './pages/ProjectInfo/ProjectInfo';
-import StarJedi from './assets/font/Starjedi.ttf'
 import { NotFound } from './pages/NotFound/NotFound';
 import { NoPlanetsLeft } from './pages/NoPlanetsLeft/NoPlanetsLeft';
+import StarJedi from './assets/font/Starjedi.ttf'
 
 export class App extends Component {
   render() {

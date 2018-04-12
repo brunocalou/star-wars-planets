@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import styled, { keyframes } from 'styled-components';
 
-import BB8Body from '../../assets/img/Body-BB8.svg';
-import BB8Head from '../../assets/img/Head-BB8.svg';
-import BB8Ground from '../../assets/img/Ground-BB8.svg';
 import { Centered } from '../Centered/Centered';
+import BB8Body from './images/Body-BB8.svg';
+import BB8Head from './images/Head-BB8.svg';
+import BB8Ground from './images/Ground-BB8.svg';
 
 export class BB8Loading extends Component {
     render () {

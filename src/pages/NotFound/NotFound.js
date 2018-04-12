@@ -7,7 +7,7 @@ import { Image } from '../../components/Image/Image';
 import { Message } from '../../components/Message/Message';
 import { WireButton } from '../../components/WireButton/WireButton';
 import { PageScaffold } from '../../components/PageScaffold/PageScaffold';
-import R2D2 from '../../assets/img/R2D2.svg';
+import R2D2 from './images/R2D2.svg';
 
 export class NotFound extends Component {
     render () {

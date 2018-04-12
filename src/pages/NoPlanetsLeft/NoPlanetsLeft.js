@@ -6,8 +6,8 @@ import { Image } from '../../components/Image/Image';
 import { Message } from '../../components/Message/Message';
 import { WireButton } from '../../components/WireButton/WireButton';
 import { PageScaffold } from '../../components/PageScaffold/PageScaffold';
-import PlanetMissing from '../../assets/img/PlanetMissing.svg';
 import { PlanetRepository } from '../../repository/PlanetRepository/PlanetRepository';
+import PlanetMissing from './images/PlanetMissing.svg';
 
 export class NoPlanetsLeft extends Component {
     reload() {

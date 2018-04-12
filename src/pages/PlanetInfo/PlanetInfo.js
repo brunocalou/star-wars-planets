@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import PlanetNofFound from '../../assets/img/PlanetNotFound.svg';
 import { PlanetCard } from '../../components/PlanetCard/PlanetCard';
 import { PlanetRepository } from '../../repository/PlanetRepository/PlanetRepository';
 import { BB8Loading } from '../../components/BB8Loading/BB8Loading';
@@ -12,6 +11,7 @@ import { WireButton } from '../../components/WireButton/WireButton';
 import { Message } from '../../components/Message/Message';
 import { Image } from '../../components/Image/Image';
 import { PageScaffold } from '../../components/PageScaffold/PageScaffold';
+import PlanetNofFound from './images/PlanetNotFound.svg';
 
 export class PlanetInfo extends Component {
     constructor() {

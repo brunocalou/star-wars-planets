@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components';
-import githubLogo from '../../assets/img/github-circle.svg'
-import informationLogo from '../../assets/img/information-outline.svg'
+
 import { Constants } from '../PlanetCard/Constants';
 import { Media } from '../../util/Media';
 import { IconButton } from '../IconButton/IconButton';
+import githubLogo from './images/github-circle.svg';
+import informationLogo from './images/information-outline.svg';
 
 export class Footer extends Component {
     render() {

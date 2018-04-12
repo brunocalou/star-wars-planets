@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import styled from 'styled-components';
+import EasyTransition from 'react-easy-transition';
+
 import { StarWarsIntro } from './StarWarsIntro/StarWarsIntro';
 import { IconButton } from '../../components/IconButton/IconButton';
-import styled from 'styled-components';
-import backIcon from '../../assets/img/arrow-left.svg'
-import EasyTransition from 'react-easy-transition'
+import backIcon from './images/arrow-left.svg';
 
 export class ProjectInfo extends Component {
     render() {
