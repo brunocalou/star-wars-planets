@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { HashRouter, Route, Switch } from 'react-router-dom';
 import { injectGlobal } from 'styled-components';
 
 import { MainLayout } from './components/MainLayout/MainLayout';
@@ -13,7 +13,7 @@ import StarJedi from './assets/font/Starjedi.ttf'
 export class App extends Component {
   render() {
     return (
-      <BrowserRouter>
+      <HashRouter>
         <MainLayout>
           <Switch>
             <Route exact path='/' component={PlanetInfo}/>
@@ -22,7 +22,7 @@ export class App extends Component {
             <Route component={NotFound}/>
           </Switch>
         </MainLayout>
-      </BrowserRouter>
+      </HashRouter>
     );
   }
 }
