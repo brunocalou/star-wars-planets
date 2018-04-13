@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+
 import { PlanetCard } from '../../components/PlanetCard/PlanetCard';
 import { PlanetRepository } from '../../repository/PlanetRepository/PlanetRepository';
 import { BB8Loading } from '../../components/BB8Loading/BB8Loading';
