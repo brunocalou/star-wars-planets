@@ -1,6 +1,63 @@
 # Star Wars Planets
 
-Website to check Star Wars Planets info
+Website to check Star Wars Planets info, available at https://brunocalou.github.io/star-wars-planets
+
+## Pages
+
+### Searching
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/5948318/38711576-e55f9240-3e9c-11e8-9b9a-2d038412cf50.png" width="350px" />
+ </p>
+
+Shows when the app is searching for a random planet.
+
+[See Here](https://brunocalou.github.io/star-wars-planets)
+
+
+### Planet Card
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/5948318/38711570-df9bfd9e-3e9c-11e8-887e-810747c10615.png" width="350px" />
+ </p>
+
+Shows when the app the planet info was retrieved correctly.
+
+[See Here](https://brunocalou.github.io/star-wars-planets)
+
+### Planet Not Found
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/5948318/38711585-ef6a8970-3e9c-11e8-96c7-fc8a610cdde2.png" width="350px" />
+ </p>
+
+Shows when the app could not retrieve a planet, e.g. On a connection error
+
+Turn off your wifi and try to see the **Next** card on [Home page](https://brunocalou.github.io/star-wars-planets)
+
+### Project Info
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/5948318/38711645-4aba8ff0-3e9d-11e8-9332-c5df8b50d8f7.png" width="350px" />
+ </p>
+
+Shows when the user clicks on the **information** icon
+
+[See Here](https://brunocalou.github.io/star-wars-planets/#/info)
+
+### No Planets Left
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/5948318/38711582-ed153a9e-3e9c-11e8-88af-96c936765384.png" width="350px" />
+ </p>
+
+Shows when the user has seen all the available planets
+
+[See Here](https://brunocalou.github.io/star-wars-planets/#/restart)
+
+### 404 - Not Found
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/5948318/38711580-ea19e088-3e9c-11e8-9a02-6b46805f311d.png" width="350px" />
+ </p>
+
+Shows when the user enters an invalid URL.
+
+[See Here](https://brunocalou.github.io/star-wars-planets/#/error)
 
 ## Available Scripts
 
