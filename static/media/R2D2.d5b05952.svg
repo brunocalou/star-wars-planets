@@ -1,0 +1,67 @@
+<svg width="212" height="144" viewBox="0 0 212 144" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="Canvas" fill="none">
+<g id="R2D2">
+<g id="Vector">
+<path d="M 0 7.05884L 1.63077 12.7989L 20.3846 7.05884L 17.1231 0.498761C 11.4154 -1.14125 3.26154 1.31878 0 7.05884Z" transform="translate(66.8616 0)" fill="#E0E0E0"/>
+</g>
+<g id="Head">
+<path d="M 106 0C 47.4578 0 0 52.8667 0 118.081L 0 139.401L 212 139.401L 212 118.081C 212 52.8667 164.542 0 106 0Z" transform="translate(0 4.5988)" fill="#F2F2F2"/>
+</g>
+<g id="Blue Strips">
+<path d="M 81.0858 3.28003C 80.4161 3.45973 79.7484 3.64654 79.0839 3.84035L 52.1846 22.1402L 105.185 21.3202L 104.369 3.28003L 81.0858 3.28003Z" transform="translate(0 4.5988)" fill="#2F80ED"/>
+<path d="M 71.5444 6.3783C 61.6905 10.1494 52.4924 15.493 44.1924 22.1402L 49.7385 22.1402L 71.5444 6.3783Z" transform="translate(0 4.5988)" fill="#2F80ED"/>
+<path d="M 6.03178 78.7207C 4.97592 82.0479 4.05025 85.4436 3.26154 88.9002L 3.26154 114.801L 11.4154 114.801L 11.4154 78.7207L 6.03178 78.7207Z" transform="translate(0 4.5988)" fill="#2F80ED"/>
+<path d="M 0 119.721L 0 129.561L 212 129.561L 212 119.721L 0 119.721Z" transform="translate(0 4.5988)" fill="#2F80ED"/>
+<path d="M 211.96 114.801C 211.651 102.18 209.564 90.0533 205.968 78.7207L 179.385 78.7207L 179.385 114.801L 211.96 114.801Z" transform="translate(0 4.5988)" fill="#2F80ED"/>
+<path d="M 168.819 22.9602C 163.754 18.8026 158.345 15.1349 152.649 12.0199L 167.154 22.9602L 168.819 22.9602Z" transform="translate(0 4.5988)" fill="#2F80ED"/>
+<path d="M 135.905 4.76469C 134.258 4.22603 132.594 3.73075 130.914 3.28003L 109.262 3.28003L 108.446 21.3202L 161.446 22.1402L 135.905 4.76469Z" transform="translate(0 4.5988)" fill="#2F80ED"/>
+<path d="M 123.706 1.64001L 88.2941 1.64001C 94.0519 0.561453 99.967 0 106 0C 112.033 0 117.948 0.561453 123.706 1.64001Z" transform="translate(0 4.5988)" fill="#2F80ED"/>
+<path d="M 163.077 78.7207L 143.508 78.7207L 143.508 114.801L 163.077 114.801L 163.077 78.7207Z" transform="translate(0 4.5988)" fill="#2F80ED"/>
+<path d="M 166.338 78.7207L 176.123 78.7207L 176.123 114.801L 166.338 114.801L 166.338 78.7207Z" transform="translate(0 4.5988)" fill="#2F80ED"/>
+<path d="M 30.9846 78.7207L 48.9231 78.7207L 48.9231 114.801L 30.9846 114.801L 30.9846 78.7207Z" transform="translate(0 4.5988)" fill="#2F80ED"/>
+<path d="M 26.0923 78.7207L 14.6769 78.7207L 14.6769 114.801L 26.0923 114.801L 26.0923 78.7207Z" transform="translate(0 4.5988)" fill="#2F80ED"/>
+<path d="M 129.646 36.0803L 81.5385 36.0803L 81.5377 36.0961L 75.1627 35.7705L 75.0154 38.691L 81.382 39.0161L 81.3497 39.6247L 74.7343 39.2869L 73.5765 62.2175L 80.1283 62.5521L 79.9981 64.9936L 72.2997 64.6004L 71.7538 75.4111L 79.4224 75.8028L 79.0923 82.0007L 140.246 79.5406L 129.646 36.0803Z" transform="translate(0 4.5988)" fill="#2F80ED"/>
+<path d="M 125.569 114.801L 125.569 86.9207L 83.1692 86.9207L 83.1692 114.801L 125.569 114.801Z" transform="translate(0 4.5988)" fill="#2F80ED"/>
+<path d="M 128.831 86.9207L 140.246 86.9207L 140.246 114.801L 128.831 114.801L 128.831 86.9207Z" transform="translate(0 4.5988)" fill="#2F80ED"/>
+</g>
+<g id="Eye">
+<g id="Ellipse 2">
+<ellipse cx="18.7538" cy="16.4001" rx="18.7538" ry="16.4001" transform="translate(92.9539 42.3191)" fill="#333333"/>
+</g>
+<g id="Ellipse 2.1">
+<ellipse cx="12.2308" cy="9.84008" rx="12.2308" ry="9.84008" transform="translate(99.4768 48.8792)" fill="#4F4F4F"/>
+</g>
+<g id="Ellipse 3">
+<ellipse cx="3.26154" cy="3.28003" rx="3.26154" ry="3.28003" transform="translate(101.108 48.8792)" fill="#828282"/>
+</g>
+</g>
+<g id="Red Light">
+<ellipse cx="9.78462" cy="9.84008" rx="9.78462" ry="9.84008" transform="translate(91.323 96.4396)" fill="#EB5757"/>
+</g>
+<g id="Camera">
+<g id="Ellipse 2_2">
+<ellipse cx="14.6769" cy="14.7601" rx="14.6769" ry="14.7601" transform="translate(50.554 86.5995)" fill="#BDBDBD"/>
+</g>
+<g id="Ellipse 2_3">
+<ellipse cx="8.96923" cy="9.02008" rx="8.96923" ry="9.02008" transform="translate(52.1848 91.5196)" fill="#E0E0E0"/>
+</g>
+<g id="Ellipse 2.3">
+<ellipse cx="7.33846" cy="7.38006" rx="7.33846" ry="7.38006" transform="translate(53.8152 93.1596)" fill="#333333"/>
+</g>
+<g id="Ellipse 2.2">
+<ellipse cx="4.07692" cy="4.10004" rx="4.07692" ry="4.10004" transform="translate(57.0769 96.4396)" fill="#4F4F4F"/>
+</g>
+<g id="Ellipse 3_2">
+<ellipse cx="1.63077" cy="1.64001" rx="1.63077" ry="1.64001" transform="translate(57.0769 96.4396)" fill="#828282"/>
+</g>
+</g>
+<g id="Rectangle">
+<rect x="0.5" y="0.5" width="15.3077" height="10.4801" transform="translate(145.138 86.5995)" stroke="#E0E0E0"/>
+</g>
+<g id="Rectangle_2">
+<rect x="0.5" y="0.5" width="15.3077" height="10.4801" transform="translate(145.138 103)" stroke="#E0E0E0"/>
+</g>
+</g>
+</g>
+</svg>
+
