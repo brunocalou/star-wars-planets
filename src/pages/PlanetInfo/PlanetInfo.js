@@ -40,12 +40,12 @@ export class PlanetInfo extends Component {
                             this.setState({ fetchingPlanet: false })
                             this.setState({ fetchingError: false })
                         } else {
-                            console.log(`${planet.name} is not valid, fetching another`)
+                            // console.log(`${planet.name} is not valid, fetching another`)
                             this._getRandomPlanet()
                         }
                     })
                     .catch(error => {
-                        console.log(error)
+                        // console.log(error)
                         this.setState({ fetchingError: true })
                     })
             } else {
@@ -55,7 +55,7 @@ export class PlanetInfo extends Component {
             PlanetRepository.reload()
             .then(() => this._getRandomPlanet())
             .catch((error) => {
-                console.log(error)
+                // console.log(error)
                 this.setState({ fetchingError: true })
             });
         }
