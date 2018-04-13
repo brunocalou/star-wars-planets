@@ -16,13 +16,11 @@ export function transformPlanet(planet) {
     });
 
     transformed.terrain = planet.terrain.map((terrain) => {
-        console.log(terrain)
         return {
             name: replaceUnknown(terrain), // TODO: Transform text
             gradient: TerrainGradients.match(terrain.toLowerCase()) // TODO: remove white space
         }
     });
 
-    console.log(transformed);
     return transformed;
 }

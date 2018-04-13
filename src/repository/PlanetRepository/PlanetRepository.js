@@ -7,7 +7,6 @@ class _PlanetRepository {
     }
 
     _randomize() {
-        console.log('randomize. planet count = ' + this.planetCount);
         // Create an array with [this.planetCount] size
         this.randomIndexes = new Array(this.planetCount);
 
@@ -40,13 +39,10 @@ class _PlanetRepository {
     }
 
     reload () {
-        console.log('reload');
         if (this.isLoaded()) {
-            console.log('is loaded')
             this._randomize();
             return new Promise((resolve, reject) => resolve());
         }
-        console.log('is Not loaded')
         return this._fetchCount().then(() => this._randomize());
     }
 

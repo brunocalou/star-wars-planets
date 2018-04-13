@@ -29,11 +29,9 @@ export class PlanetInfo extends Component {
         this.setState({ fetchingError: false })
 
         if (PlanetRepository.isLoaded()) {
-            console.log('Planet repository says it is loaded')
             if (PlanetRepository.hasRandomPlanet()) {
                 PlanetRepository.getRandomPlanet()
                     .then(planet => {
-                        console.log(planet);
                         return planet;
                     })
                     .then(planet => {
