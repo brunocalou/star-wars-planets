@@ -7,15 +7,18 @@ import { IconButton } from '../../components/IconButton/IconButton';
 import backIcon from './images/arrow-left.svg';
 
 export class ProjectInfo extends Component {
+    _handleFinishedIntro() {
+        this.props.history.push('/');
+    }
+
     render() {
         return (
             <EasyTransition
                 path={this.props.history.location.pathname}
                 initialStyle={{opacity: 0, height: '100vh'}}
                 transition="opacity 0.3s ease-in"
-                finalStyle={{opacity: 1, height: '100vh'}}
-            >
-                <StarWarsIntro>
+                finalStyle={{opacity: 1, height: '100vh'}}>
+                <StarWarsIntro onFinished={() => this._handleFinishedIntro()}>
                     <Back onClick={this.props.history.goBack}>
                         <IconButton src={backIcon} alt="back" />
                     </Back>

@@ -1,11 +1,42 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import Sound from 'react-sound';
+
 import './starwarsintro.css';
-import './starwarsintroTweeks.css'
+import './starwarsintroTweeks.css';
 
 export class StarWarsIntro extends Component {
+    constructor() {
+        super();
+        this.state = {
+            playStatus: Sound.status.STOPPED,
+            _isMounted: false
+        }
+    }
+
+    componentDidMount() {
+        this.setState({ _isMounted: true });
+
+        setTimeout(() => {
+            // Avoids setting the state if the component is not mounted
+            if (this.state._isMounted) {
+                this.setState({ playStatus: Sound.status.PLAYING });
+            }
+        }, 2000);
+    }
+
+    componentWillUnmount() {
+        this.setState({ _isMounted: false });
+        this.setState({ playStatus: Sound.status.STOPPED });
+    }
+
     render() {
         return (
             <div className="star-wars-intro">
+
+                <Sound
+                    url={'https://raw.githubusercontent.com/brunocalou/star-wars-planets/master/public/assets/audio/StarWarsThemeSong.mp3'}
+                    playStatus={this.state.playStatus}
+                    onFinishedPlaying={this.props.onFinished}/>
 
                 {/* Blue Intro Text */}
                 <p className="intro-text">
